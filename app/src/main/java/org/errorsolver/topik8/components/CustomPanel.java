@@ -8,25 +8,31 @@ import javax.swing.JPanel;
 
 public class CustomPanel extends JPanel {
 
+    private final TableMhs tableRef;
+    private String[] options = {};
     private JComboBox<String> comboBox;
-    String[] options = {};
 
     public CustomPanel(TableMhs tableRef, String[] options) {
         this.options = options;
+        this.tableRef = tableRef;
+
+        _createComboBox();
+    }
+
+    public JComboBox<String> getComboBox() {
+        return comboBox;
+    }
+
+    private void _createComboBox() {
         JLabel label = new JLabel("Urutkan Berdasarkan:");
-
         comboBox = new JComboBox<>(this.options);
-
-        add(label);
-        add(comboBox);
 
         comboBox.addActionListener((ActionEvent e) -> {
             int selected = comboBox.getSelectedIndex();
             tableRef.sortByColumn(selected);
         });
-    }
 
-    public JComboBox<String> getComboBox() {
-        return comboBox;
+        add(label);
+        add(comboBox);
     }
 }

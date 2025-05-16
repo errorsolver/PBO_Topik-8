@@ -3,6 +3,8 @@
  */
 package org.errorsolver.topik8;
 
+import javax.swing.BoxLayout;
+
 import org.errorsolver.topik8.components.CustomFrame;
 import org.errorsolver.topik8.components.CustomPanel;
 import org.errorsolver.topik8.components.LoadCSV;
@@ -10,20 +12,24 @@ import org.errorsolver.topik8.components.TableMhs;
 
 public class App {
 
+    private final static String APP_TITLE = "Data Mahasiswa";
+    private final static int APP_WIDTH = 800;
+    private final static int APP_HEIGHT = 600;
+    private final static int APP_LAYOUT = BoxLayout.Y_AXIS;
+    private final static String FILE_NAME = "data-mahasiswa.csv";
+
     public static void main(String[] args) {
-        String fileName = "data-mahasiswa.csv";
-        LoadCSV csv = new LoadCSV(fileName);
+        LoadCSV csv = new LoadCSV(FILE_NAME);
         String[] header = csv.getHeader();
         String[][] data = csv.getDatas();
 
         TableMhs tableMhs = new TableMhs(header, data);
-        CustomFrame customFrame = new CustomFrame("Data Mahasiswa", 800, 600);
-        customFrame.createFrame();
 
+        CustomFrame customFrame = new CustomFrame(APP_TITLE, APP_WIDTH, APP_HEIGHT, APP_LAYOUT);
         CustomPanel cPanel = new CustomPanel(tableMhs, header);
 
-        customFrame.add(cPanel.getComboBox(), "North");
-        customFrame.add(tableMhs.getScrollPane(), "Center");
+        customFrame.add(cPanel.getComboBox(), "West");
+        customFrame.add(tableMhs.getScrollPane(), "South");
         customFrame.setVisible(true);
     }
 }

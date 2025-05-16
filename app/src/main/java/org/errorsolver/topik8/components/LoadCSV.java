@@ -57,9 +57,7 @@ public class LoadCSV {
         }
     }
 
-    // simpan data
     private void _saveData() {
-        System.out.println("Data: " + this.records.get(1).getParser().getRecords());
         List<CSVRecord> dataTemp = this.records;
         dataTemp.remove(0);
 

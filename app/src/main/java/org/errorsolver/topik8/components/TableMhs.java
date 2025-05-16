@@ -8,13 +8,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 public class TableMhs extends JTable {
-    private JTable table;
-    private DefaultTableModel model;
-    private TableRowSorter<DefaultTableModel> sorter;
-    private JScrollPane scrollPane;
+    private final JTable table;
+    private final DefaultTableModel model;
+    private final TableRowSorter<DefaultTableModel> sorter;
+    private final JScrollPane scrollPane;
 
     private String[] column = {};
-    private Object[][] data;
+    private final Object[][] data;
 
     public TableMhs(String[] header, Object[][] data) {
         this.column = header;

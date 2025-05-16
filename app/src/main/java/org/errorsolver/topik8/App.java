@@ -10,28 +10,12 @@ import org.errorsolver.topik8.components.TableMhs;
 
 public class App {
 
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public static void main(String[] args) {
-        // System.out.println(new App().getGreeting());
-        // CustomWindows customWindows = new CustomWindows("Test");
-        // customWindows.createWindows();
-        // CustomTable customTable = new CustomTable("Test");
-        // customTable.createTable();
-
         String fileName = "data-mahasiswa.csv";
         LoadCSV csv = new LoadCSV(fileName);
         String[] header = csv.getHeader();
-        String[][] data = csv.getData();
+        String[][] data = csv.getDatas();
 
-        // for (Object dataa : csv.getData()) {
-        //     String[] row = (String[]) dataa;
-        //     for (String value : row) {
-        //         System.out.println("value: " + value);
-        //     }
-        // }
         TableMhs tableMhs = new TableMhs(header, data);
         CustomFrame customFrame = new CustomFrame("Data Mahasiswa", 800, 600);
         customFrame.createFrame();
@@ -39,24 +23,7 @@ public class App {
         CustomPanel cPanel = new CustomPanel(tableMhs, header);
 
         customFrame.add(cPanel.getComboBox(), "North");
-        // JPanel panel = new JPanel();
-        // panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10), BoxLayout.Y_AXIS); // 10px di semua sisi
-
         customFrame.add(tableMhs.getScrollPane(), "Center");
-
-        // for (Object elem : ) {
-        //     System.out.println(elem);
-        // }
-        // TableMhs tableMhs = new TableMhs(csv.getHeader(), csv.getData());
-        // loadCSV;
-        // loadCSV.getStream();
-        // for (CSVRecord record : csv.readCSVStream()) {
-        //     String nim = record.get("nim");
-        //     String nama = record.get("nama");
-        //     String sks = record.get("sksTotal");
-        //     String ipk = record.get("ipk");
-        //     System.out.println("nim: " + nim + ", Umur: " + nama + ", SKS: " + sks + ", Ipk: " + ipk);
-        // }
         customFrame.setVisible(true);
     }
 }

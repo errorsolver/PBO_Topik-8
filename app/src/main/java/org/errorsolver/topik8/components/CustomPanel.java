@@ -12,7 +12,6 @@ public class CustomPanel extends JPanel {
     String[] options = {};
 
     public CustomPanel(TableMhs tableRef, String[] options) {
-        // setLayout(new FlowLayout(FlowLayout.CENTER));
         this.options = options;
         JLabel label = new JLabel("Urutkan Berdasarkan:");
 
@@ -22,7 +21,7 @@ public class CustomPanel extends JPanel {
         add(comboBox);
 
         comboBox.addActionListener((ActionEvent e) -> {
-            int selected = comboBox.getSelectedIndex(); // 0,1,2,3
+            int selected = comboBox.getSelectedIndex();
             tableRef.sortByColumn(selected);
         });
     }

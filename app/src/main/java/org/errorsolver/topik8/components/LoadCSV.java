@@ -11,60 +11,27 @@ import org.apache.commons.csv.CSVRecord;
 
 public class LoadCSV {
 
-    // private final String filePath;
-    private String fileName;
+    private final String fileName;
     private InputStream is;
     private final List<CSVRecord> records = new ArrayList<>();
     private String[][] dataParse = {};
 
-    // private void load() {
-    //  try (FileReader reader = new FileReader(this.filePath, StandardCharsets.UTF_8)) {
-    //     Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
-    //     for (CSVRecord record : records) {
-    //         // Menampilkan nilai setiap kolom dalam baris CSV
-    //         for (String header : record.toMap().keySet()) {
-    //             System.out.print(record.get(header) + " ");
-    //         }
-    //         System.out.println();
-    //     }
-    // } catch (IOException e) {
-    //     e.printStackTrace();
-    // }
-    // }
-    // ambil file dri resources
-
-       public LoadCSV(String fileName) {
+    public LoadCSV(String fileName) {
         this.fileName = fileName;
-        // load();
         _getStream();
         _readCSVStream();
         _saveData();
-        // readCSVStream(); // Do not call overridable method in constructor
     }
-    
-    // ambil header
+
     public String[] getHeader() {
         String[] header = this.records.get(0).getParser().getHeaderNames().toArray(String[]::new);
-        // System.out.println("Header: " + this.records.get(0).getParser().getHeaderNames());
-        // this.records.get(0).getParser().getHeaderNames().forEach(action);
         return header;
     }
 
-    public String[][] getData() {
-        // int rowCount = this.records.size();
-        // int colCount = this.getHeader().length;
-        // String[][] stringArrayData = new String[rowCount][colCount];
-        // for (int i = 0; i < rowCount; i++) {
-        //     CSVRecord record = this.records.get(i);
-        //     for (int j = 0; j < colCount; j++) {
-        //         stringArrayData[i][j] = record.get(j);
-        //     }
-        // }
-        // return stringArrayData;
+    public String[][] getDatas() {
         return this.dataParse;
     }
 
-    // ambil file dri resources
     private void _getStream() {
         try {
             this.is = getClass().getClassLoader().getResourceAsStream(this.fileName);
@@ -76,7 +43,6 @@ public class LoadCSV {
         }
     }
 
-    // baca file csv
     private void _readCSVStream() {
         try {
             CSVParser parser = CSVFormat.DEFAULT

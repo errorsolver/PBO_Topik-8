@@ -17,14 +17,7 @@ public class TableMhs extends JTable {
     private Object[][] data;
 
     public TableMhs(String[] header, Object[][] data) {
-        // String[] column = {"NIM", "Nama Mahasiswa", "Total SKS", "IPK"};
         this.column = header;
-
-        // data = Arrays.asList(
-        //     new String[]{"17D29D5", "Dustin Salinas", "127", "3.79"},
-        //     new String[]{"2D8D909", "Alfonso Herrera", "91", "2.15"},
-        //     new String[]{"32D6A11", "Lucy Blackwell", "128", "3.63"}
-        // );
         this.data = data;
 
         model = new DefaultTableModel(this.data, this.column);

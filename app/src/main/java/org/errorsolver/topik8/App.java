@@ -25,11 +25,7 @@ public class App {
 
         TableMhs tableMhs = new TableMhs(header, data);
 
-        CustomFrame customFrame = new CustomFrame(APP_TITLE, APP_WIDTH, APP_HEIGHT, APP_LAYOUT);
-        CustomPanel cPanel = new CustomPanel(tableMhs, header);
-
-        customFrame.add(cPanel.getComboBox(), "West");
-        customFrame.add(tableMhs.getScrollPane(), "South");
-        customFrame.setVisible(true);
+        CustomPanel sortingPanel = new CustomPanel(tableMhs, header);
+        CustomFrame mainFrame = new CustomFrame(APP_TITLE, APP_WIDTH, APP_HEIGHT, APP_LAYOUT, sortingPanel, tableMhs.getScrollPane());
     }
 }

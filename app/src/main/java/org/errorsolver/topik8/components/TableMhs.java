@@ -1,5 +1,7 @@
 package org.errorsolver.topik8.components;
 
+import java.awt.FlowLayout;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
@@ -8,23 +10,23 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 public class TableMhs extends JTable {
-    private final JTable table;
-    private final DefaultTableModel model;
-    private final TableRowSorter<DefaultTableModel> sorter;
-    private final JScrollPane scrollPane;
 
-    private String[] column = {};
+    private final String[] column;
     private final Object[][] data;
 
+    private DefaultTableModel model;
+    private TableRowSorter<DefaultTableModel> sorter;
+    private JScrollPane scrollPane;
+
     public TableMhs(String[] header, Object[][] data) {
+        if (header == null || data == null) {
+            throw new IllegalArgumentException("Data null");
+        }
+
         this.column = header;
         this.data = data;
 
-        model = new DefaultTableModel(this.data, this.column);
-        table = new JTable(model);
-        sorter = new TableRowSorter<>(model);
-        table.setRowSorter(sorter);
-        scrollPane = new JScrollPane(table);
+        _createTable();
     }
 
     public JScrollPane getScrollPane() {
@@ -32,8 +34,17 @@ public class TableMhs extends JTable {
     }
 
     public void sortByColumn(int columnIndex) {
-        sorter.setSortKeys(java.util.List.of(
-                new RowSorter.SortKey(columnIndex, SortOrder.ASCENDING)
-        ));
+        sorter.setSortKeys(java.util.List.of(new RowSorter.SortKey(columnIndex, SortOrder.ASCENDING)));
+    }
+
+    private void _createTable(){
+        model = new DefaultTableModel(this.data, this.column);
+        sorter = new TableRowSorter<>(model);
+        
+        this.setModel(model);
+        this.setRowSorter(sorter);
+        
+        scrollPane = new JScrollPane(this);
+        setLayout(new FlowLayout(FlowLayout.LEFT));
     }
 }

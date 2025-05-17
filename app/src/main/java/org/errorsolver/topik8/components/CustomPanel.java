@@ -1,5 +1,6 @@
 package org.errorsolver.topik8.components;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JComboBox;
@@ -31,7 +32,9 @@ public class CustomPanel extends JPanel {
             int selected = comboBox.getSelectedIndex();
             tableRef.sortByColumn(selected);
         });
+        tableRef.sortByColumn(0);
 
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         add(label);
         add(comboBox);
     }

@@ -11,7 +11,7 @@ public class CustomFrame extends JFrame {
     private final int width;
     private final int height;
     private final int layout;
-    private JComponent[] components;
+    private final JComponent[] components;
 
     public CustomFrame(String title, int width, int height, int layout, JComponent... components) {
         this.title = title;

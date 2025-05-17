@@ -26,6 +26,6 @@ public class App {
         TableMhs tableMhs = new TableMhs(header, data);
 
         CustomPanel sortingPanel = new CustomPanel(tableMhs, header);
-        CustomFrame mainFrame = new CustomFrame(APP_TITLE, APP_WIDTH, APP_HEIGHT, APP_LAYOUT, sortingPanel, tableMhs.getScrollPane());
+        new CustomFrame(APP_TITLE, APP_WIDTH, APP_HEIGHT, APP_LAYOUT, sortingPanel, tableMhs.getScrollPane());
     }
 }
